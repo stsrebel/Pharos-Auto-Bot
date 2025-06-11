@@ -118,17 +118,17 @@ const positionManagerAbi = [
 ];
 
 const pairOptions = [
-  { id: 1, from: 'WPHRS', to: 'USDC', amount: 0.0001 },
-  { id: 2, from: 'WPHRS', to: 'USDT', amount: 0.0001 },
-  { id: 3, from: 'USDC', to: 'WPHRS', amount: 0.0001 },
-  { id: 4, from: 'USDT', to: 'WPHRS', amount: 0.0001 },
+  { id: 1, from: 'WPHRS', to: 'USDC', amount: 0.001 },
+  { id: 2, from: 'WPHRS', to: 'USDT', amount: 0.001 },
+  { id: 3, from: 'USDC', to: 'WPHRS', amount: 0.001 },
+  { id: 4, from: 'USDT', to: 'WPHRS', amount: 0.001 },
   { id: 5, from: 'USDC', to: 'USDT', amount: 0.0001 },
-  { id: 6, from: 'USDT', to: 'USDC', amount: 0.0001 },
+  { id: 6, from: 'USDT', to: 'USDC', amount: 0.001 },
 ];
 
 const lpOptions = [
-  { id: 1, token0: 'WPHRS', token1: 'USDC', amount0: 0.0001, amount1: 0.0001, fee: 3000 },
-  { id: 2, token0: 'WPHRS', token1: 'USDT', amount0: 0.0001, amount1: 0.0001, fee: 3000 },
+  { id: 1, token0: 'WPHRS', token1: 'USDC', amount0: 0.001, amount1: 0.001, fee: 3000 },
+  { id: 2, token0: 'WPHRS', token1: 'USDT', amount0: 0.001, amount1: 0.001, fee: 3000 },
 ];
 
 const loadProxies = () => {
@@ -421,7 +421,7 @@ const performSwap = async (wallet, provider, index, jwt, proxy) => {
 
 const transferPHRS = async (wallet, provider, index, jwt, proxy) => {
   try {
-    const amount = 0.000001;
+    const amount = 0.001;
     const randomWallet = ethers.Wallet.createRandom();
     const toAddress = randomWallet.address;
     logger.step(`Preparing PHRS transfer ${index + 1}: ${amount} PHRS to ${toAddress}`);
@@ -465,7 +465,7 @@ const transferPHRS = async (wallet, provider, index, jwt, proxy) => {
 const wrapPHRS = async (wallet, provider, index, jwt, proxy) => {
   try {
     const minAmount = 0.001;
-    const maxAmount = 0.005;
+    const maxAmount = 0.002;
     const amount = minAmount + Math.random() * (maxAmount - minAmount);
     const amountWei = ethers.parseEther(amount.toFixed(6).toString());
     logger.step(`Preparing wrap PHRS ${index + 1}: ${amount.toFixed(6)} PHRS to WPHRS`);
